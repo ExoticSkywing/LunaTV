@@ -1,0 +1,17 @@
+services:
+  lunatv-core:
+    image: ghcr.io/szemeng76/lunatv:latest
+    container_name: lunatv-core
+    restart: on-failure
+    ports:
+      - '5088:3000'
+    environment:
+      - USERNAME=admin
+      - PASSWORD=admin
+      - NEXT_PUBLIC_STORAGE_TYPE=redis
+      - REDIS_URL=redis://:redispasswd@host.docker.internal:6379  # 宿主机Redis连接
+      # 如果上面的host.docker.internal不工作，可以尝试以下之一：
+      # - REDIS_URL=redis://172.17.0.1:6379  # Docker默认网桥网关
+      # - REDIS_URL=redis://宿主机IP:6379     # 直接使用宿主机IP
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # 让容器能够访问宿主机服务
