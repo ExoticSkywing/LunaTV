@@ -9,7 +9,7 @@ services:
       - USERNAME=admin
       - PASSWORD=admin
       - NEXT_PUBLIC_STORAGE_TYPE=redis
-      - REDIS_URL=redis://:redispasswd@host.docker.internal:6379  # 宿主机Redis连接
+      - REDIS_URL=redis_url  # 宿主机Redis连接
       # 如果上面的host.docker.internal不工作，可以尝试以下之一：
       # - REDIS_URL=redis://172.17.0.1:6379  # Docker默认网桥网关
       # - REDIS_URL=redis://宿主机IP:6379     # 直接使用宿主机IP
